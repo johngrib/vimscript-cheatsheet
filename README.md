@@ -191,3 +191,50 @@ let list = split('1 2 3', '\s') " ['1', '2', '3']
 let str = join(list, '-')       " '1-2-3'
 ```
 
+## flow control
+
+* `if`
+
+```viml
+if 1
+    echo 'true'
+endif
+
+if 0
+    echo 'impossibe'
+endif
+
+let name = 'foo'
+
+if name == 'test'
+    echo 'test name'
+elseif name == 'foo'    " else if (x), elseif (o)
+    echo name
+endif
+```
+
+* `for`
+
+```viml
+for item in [1, 2, 3]
+    echo item
+endif
+
+for item in [1, 2, 3]
+    if item < 2
+        continue
+    else
+        break
+    endif
+endfor
+```
+
+* `while`
+
+```viml
+let sum = 0
+while sum < 100
+    let sum += 1
+    call do_something()
+endwhile
+```
