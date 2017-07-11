@@ -238,3 +238,70 @@ while sum < 100
     call do_something()
 endwhile
 ```
+
+## function
+
+* The name must be made of alphanumeric characters and `_`
+* The name must start with a capital or `s:`
+    * `:b` or `:g` is not allowed.
+
+```viml
+function Foo(value)     " global function
+    echo a:value
+endfunction
+
+function s:foo(value)   " script private function
+    echo a:value
+endfunction
+```
+
+* `function!` : override a function with the same name.
+
+```viml
+function Foo(value)
+    echo a:value
+endfunction
+
+function! Foo(value)
+    echo a:value * 10
+endfunction
+
+call Foo(7)     " 70
+```
+
+* Dictionary function (method) with `dict` keyword
+
+```viml
+let obj = { 'msg': 'hello' }
+
+function obj.getMsg() dict
+    return self.msg
+endfunction
+
+let msg = obj.getMsg()
+echo msg    " 'hello'
+```
+
+```viml
+function GetMsg() dict
+    return self.msg
+endfunction
+
+let obj1 = { 'msg': 'hello', 'getMsg': funcref('GetMsg') }
+let obj2 = { 'msg': 'hi', 'getMsg': function('GetMsg') }
+
+echo obj1.getMsg()  " 'hello'
+echo obj2.getMsg()  " 'hi'
+```
+
+* apply with `function()`
+
+```viml
+function Add(num1, num2)
+    return a:num1 + num2
+endfunction
+
+let Add3 = function('Add', [3])
+echo Add3(7)    " 10
+echo Add3(2)    " 5
+```
