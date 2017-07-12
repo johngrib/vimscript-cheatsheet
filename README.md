@@ -191,6 +191,10 @@ let list = split('1 2 3', '\s') " ['1', '2', '3']
 let str = join(list, '-')       " '1-2-3'
 ```
 
+## Dictionary
+
+
+
 ## flow control
 
 * `if`
@@ -304,4 +308,29 @@ endfunction
 let Add3 = function('Add', [3])
 echo Add3(7)    " 10
 echo Add3(2)    " 5
+```
+
+* arguments
+
+`:help function-argument`
+
+
+```viml
+function Test(...)
+    echo 'number of args : ' . a:0
+    echo 'first arg : ' . a:1
+    echo 'second arg : ' . a:2
+
+    echo ''
+
+    for s in a:000
+        echon ' ' . s
+    endfor
+endfunction
+
+call Test('dog', 'cat')
+" number of args : 2
+" first arg : dog
+" second arg : cat
+" dog cat
 ```
