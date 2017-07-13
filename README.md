@@ -380,3 +380,27 @@ call Test('dog', 'cat')
 " second arg : cat
 " dog cat
 ```
+
+* public static function
+    * naming rule : {directory_name}#{file_name}#{function_name}
+
+```
+- .vim
+    ┕ plugin
+        ┕ test-vim-plugin           # project root
+            ┕ syntax
+                ...
+            ┕ plugin
+                ...
+            ┕ autoload
+                ┕ TestVimPlugin
+                    ┕ screen.vim    # sample file
+```
+
+```viml
+# ~/.vim/plugin/test-vim-plugin/autoload/TestVimPlugin/screen.vim
+
+function! TestVimPlugin#screen#getScreenNumber()
+    return 1
+endfunction
+```
