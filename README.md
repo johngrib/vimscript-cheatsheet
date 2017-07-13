@@ -208,7 +208,7 @@ let obj.test = 1
 let obj = { 'name': 'John', 'number': 24, 'test': 1 }
 let removed = remove(obj, 'name')
 
-echo let    " 'John'
+echo removed    " 'John'
 
 unlet obj.number
 unlet obj['test']
