@@ -193,7 +193,53 @@ let str = join(list, '-')       " '1-2-3'
 
 ## Dictionary
 
+* add new entry
 
+```viml
+let obj = { 'name': 'John', 'number': 24 }
+let obj['like'] = ['vim', 'game', 'orange']
+let obj['address'] = 'Seoul, Korea'
+let obj.test = 1
+```
+
+* delete entry
+
+```viml
+let obj = { 'name': 'John', 'number': 24, 'test': 1 }
+let removed = remove(obj, 'name')
+
+echo let    " 'John'
+
+unlet obj.number
+unlet obj['test']
+```
+
+* to List
+
+```viml
+for key in keys(mydict)
+   echo key . ': ' . mydict[key]
+endfor
+
+for key in sort(keys(mydict))
+   echo key . ': ' . mydict[key]
+endfor
+
+for v in values(mydict)
+   echo "value: " . v
+endfor
+
+for [key, value] in items(mydict)
+   echo key . ': ' . value
+endfor
+```
+
+* dictionary functions
+
+```viml
+echo has_key(dict, 'foo')
+echo empty(dict)
+```
 
 ## flow control
 
